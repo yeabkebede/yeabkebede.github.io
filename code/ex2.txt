@@ -1,0 +1,52 @@
+﻿float Q;
+
+
+
+
+void setup() {
+  size (600, 600);
+  background(245, 230, 181);
+  noFill();
+  for (int y = 30; y < height; y +=30) {
+    for (int x = 30; x < width; x += 30) {
+      ellipse(x, y, 60, 60);
+    }
+    
+  }
+  smooth(2);
+}
+
+
+void draw() {
+ 
+  stroke(148, 36, 179);
+  strokeWeight(5);
+ 
+  translate(width/2, height/2);
+  line(x1(Q), y1(Q), x2(Q), y2(Q));
+  Q+= 0.5;
+  
+  if (frameCount < 500) {
+    saveFrame("Art101/exercise2-######.png");
+  } else {
+    exit(); 
+  }  
+}
+
+
+float x1(float Q) {
+  return sin(Q / 10) * 100 + sin(Q / 5) * 20;
+}
+
+
+float y1(float Q) {
+  return cos(Q / 10) * 100;
+}
+float x2(float Q) {
+  return sin(Q / 10) * 200 + sin( Q) * 2;
+}
+
+
+float y2(float Q) {
+  return cos(Q / 20) * 200 + cos(Q / 12) * 20;
+  }

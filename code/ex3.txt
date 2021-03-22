@@ -1,0 +1,58 @@
+﻿PImage img;
+String[] headlines = {
+  "Odenigbo was a little crazy; he had spent too many years reading books overseas, talked to himself in his office, did not always return greetings, and had too much hair.",
+};
+//PFont f; 
+//float x;
+//int index = 0; 
+
+
+
+
+void setup() {
+  size(800, 800);
+  img = loadImage("diva_101.jpg");
+  img.resize(800,800);
+  frameRate(15);
+  
+  //f = createFont("Arial", 20);
+  //x = width;
+}
+
+
+void draw() {
+  background(255);
+  
+
+
+  fill(0);
+  noStroke();
+  
+  float tiles = mouseX/10;
+  float tileSize = width/tiles;
+  
+  translate(tileSize/2,tileSize/2);
+  
+  for (int x = 0; x < tiles; x++) {
+    for (int y = 0; y < tiles; y++) {
+    
+     color c= img.get(int(x*tileSize),int(y*tileSize));
+     float size = map(brightness(c), 0, 255, tileSize, 0);
+    
+      ellipse(x*tileSize, y*tileSize, size, size);
+      
+   //fill(255);
+   //textFont(f, 20); 
+   //textAlign (LEFT); 
+   //text(headlines[index], x, height-20);
+   //x = x-3;
+   
+   
+    }
+  }
+  if (frameCount < 100) {
+  saveFrame("Art101/exercise3-######.png");
+  } else {
+    exit();
+  }
+}
